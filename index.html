@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cricket Scoreboard</title>
+  </head>
+  <body>
+    <h1>Cricket Score Board</h1>
+    <h2 id="runsBoard">0/0</h2>
+    <h2 id="oversBoard">1.2 Overs</h2>
+    <!-- <p>0 1 0 5wd 3 2 2 | 2 3 0 6 6 4</p> -->
+    <div class="runs">
+      <button class="run" onclick="addRun(0)">0</button>
+      <button class="run" onclick="addRun(1)">1</button>
+      <button class="run" onclick="addRun(2)">2</button>
+      <button class="run" onclick="addRun(3)">3</button>
+      <button class="run" onclick="addRun(4)">4</button>
+      <button class="run" onclick="addRun(5)">5</button>
+      <button class="run" onclick="addRun(6)">6</button>
+      <button class="run" onclick="addRun('wd')">wd</button>
+      <button class="run" onclick="addRun('nb')">nb</button>
+      <button class="run" onclick="addRun('W')">W</button>
+      <button class="run" onclick="reset()">Reset</button>
+    </div>
+    <div id="balls"></div>
+    <script src="index.js"></script>
+  </body>
+</html>
