@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=AR+One+Sans:wght@500;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "AR One Sans", sans-serif;
+  font-size: 62.5%;
+}
+body {
+  display: flex;
+  justify-content: center;
+  color: whitesmoke;
+  height: 100vh;
+}
+.box {
+  padding: 2rem;
+  width: 100%;
+  background: rgb(26, 25, 25);
+}
+h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+#runsBoard {
+  font-size: 5rem;
+  text-align: center;
+}
+#oversBoard {
+  font-size: 3rem;
+  text-align: center;
+}
+.runs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem;
+}
+.run,
+.extraRun {
+  font-size: 2rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  background: rgb(232, 237, 240);
+  transition: background 0.25s;
+}
+.run:hover {
+  background: rgb(207, 206, 206);
+}
+
+#extraRunBlock > h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.btns {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+#balls {
+  max-width: 50rem;
+  margin: auto;
+  color: white;
+}
+.overs {
+  margin-bottom: 2rem;
+}
+.overTag {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+}
+.over {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.ball {
+  background: rgb(95, 94, 94);
+  padding: 1rem;
+  border: 0.2rem solid whitesmoke;
+  border-radius: 1rem;
+  font-size: 1.6rem;
+}

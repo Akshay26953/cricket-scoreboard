@@ -1,14 +1,11 @@
 const runsBoard = document.getElementById("runsBoard");
 const oversBoard = document.getElementById("oversBoard");
 const balls = document.getElementById("balls");
-const range = document.getElementById("range");
-const rangeNumber = document.getElementById("rangeNumber");
 const extraRunBlock = document.getElementById("extraRunBlock");
-// const extraRun = document.getElementsByClassName("extraRun");
 const extraBtn = document.getElementById("extraBtn");
 
 let scoreSheet;
-
+run.style.background ='red';
 function getData() {
   return localStorage.getItem("scoreCard");
 }
@@ -16,22 +13,25 @@ function getData() {
 function showRuns() {
   const score = JSON.parse(localStorage.getItem("scoreCard"));
   if (score.overs == null) {
-    runsBoard.innerHTML = "0/0";
+    runsBoard.innerHTML = "0 / 0";
   } else {
     const data = score.overs
       .map((e, index) => {
-        return `<div><span>Over ${index + 1}</span> : ${e
+        return `<div class="overs"><div class="overTag">Over ${
+          index + 1
+        }</div> <div class="over">${e
           .map((e) => {
-            return `<span>${e}</span>`;
+            return `<span class="ball">${e}</span>`;
           })
-          .join(" ")}</div>`;
+          .join(" ")}</div></div>`;
       })
       .join(" ");
-    runsBoard.innerHTML = score.score + "/" + score.wickets;
+    runsBoard.innerHTML = score.score + " / " + score.wickets;
     oversBoard.innerHTML =
       (score.over.length == 6 ? score.overs.length : score.overs.length - 1) +
       "." +
-      (score.over.length == 6 ? 0 : score.over.length) + " Overs";
+      (score.over.length == 6 ? 0 : score.over.length) +
+      " Overs";
     balls.innerHTML = data;
   }
 }
@@ -102,4 +102,12 @@ function countScore(run, score) {
   }
 
   localStorage.setItem("scoreCard", JSON.stringify(score));
+}
+
+function reset() {
+  if (confirm("Do you want to reset all?")) {
+    localStorage.removeItem("scoreCard");
+    // localStorage.clear();
+  }
+  location.reload();
 }
