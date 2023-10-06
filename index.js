@@ -1,70 +1,61 @@
 const runsBoard = document.getElementById("runsBoard");
 const balls = document.getElementById("balls");
+const range = document.getElementById("range");
+const rangeNumber = document.getElementById("rangeNumber");
+const extraRun = document.getElementById("extraRun");
+const extraBtn = document.getElementById("extraBtn");
 
-function showRuns() {
-  const overs = JSON.parse(localStorage.getItem("overs"));
-  if (overs == null) {
-    runsBoard.innerHTML = "0/0";
-  } else {
-    const data = overs
-      .map((e, index) => {
-        return `<div><span>Over ${index + 1}</span> : ${e
-          .map((e) => {
-            return `<span>${e}</span>`;
-          })
-          .join(" ")}</div>`;
-      })
-      .join(" ");
+let scoreSheet;
 
-    balls.innerHTML = data;
-  }
+function getData() {
+  return localStorage.getItem("scoreCard");
 }
-showRuns();
 
-let oversArr;
-let overArr;
-
-// Add Runs - Done
 function addRun(run) {
-  storeRuns(run);
+  updateOver(run);
 }
 
-// Store Runs in Over Arrays
-function storeRuns(run) {
-  const over = localStorage.getItem("over");
-  if (over == null) {
-    overArr = [];
+function updateOver(run) {
+  const score = getData();
+
+  if (score == null) {
+    scoreSheet = {
+      target: 0,
+      overs: [],
+      over: [],
+      score: 0,
+      wickets: 0,
+      extras: 0,
+    };
   } else {
-    overArr = JSON.parse(over);
+    scoreSheet = JSON.parse(score);
   }
-  overArr.push(run);
-  localStorage.setItem("over", JSON.stringify(overArr));
-  storeOvers(overArr);
-  showRuns();
+  updateScore(run, scoreSheet);
 }
 
-// Store Overs
-function storeOvers(overArr) {
-  const overs = localStorage.getItem("overs");
-  if (overArr.length > 5) {
-    if (overs == null) {
-      oversArr = [];
+function updateScore(run, score) {
+  if (score.over.length - score.extras > 5) {
+    score.over = [];
+    score.extras = 0;
+  } else {
+    score.overs.pop();
+  }
+  score.overs.push(score.over);
+  score.over.push(run);
+  countScore(run, score);
+}
+
+function countScore(run, score) {
+  if (typeof run == "number") {
+    score.score += run;
+  } else {
+    if (run == "W") {
+      score.wickets += 1;
     } else {
-      oversArr = JSON.parse(overs);
+      score.extras += 1;
     }
-    oversArr.push(overArr);
-    localStorage.setItem("overs", JSON.stringify(oversArr));
-    localStorage.removeItem("over");
   }
+  localStorage.setItem("scoreCard", JSON.stringify(score));
 }
 
-// Reset Last entery - Done
-function reset() {
-  if (confirm("Do you want to delete last entry?")) {
-    const over = JSON.parse(localStorage.getItem("over"));
-    over.pop();
-    localStorage.removeItem("over");
-    localStorage.setItem("over", JSON.stringify(over));
-    console.log(over);
-  }
-}
+
