@@ -8,8 +8,7 @@
   <body>
     <h1>Cricket Score Board</h1>
     <h2 id="runsBoard">0/0</h2>
-    <h2 id="oversBoard">1.2 Overs</h2>
-    <!-- <p>0 1 0 5wd 3 2 2 | 2 3 0 6 6 4</p> -->
+    <h2 id="oversBoard">0.0 Overs</h2>
     <div class="runs">
       <button class="run" onclick="addRun(0)">0</button>
       <button class="run" onclick="addRun(1)">1</button>
@@ -23,14 +22,14 @@
       <button class="run" onclick="addRun('W')">W</button>
       <button class="run" onclick="reset()">Reset</button>
     </div>
-    <div id="extraRun" style="display: none;">
-      <button class="run" onclick="addExtraRun(0)">0</button>
-      <button class="run" onclick="addExtraRun(1)">1</button>
-      <button class="run" onclick="addExtraRun(2)">2</button>
-      <button class="run" onclick="addExtraRun(3)">3</button>
-      <button class="run" onclick="addExtraRun(4)">4</button>
-      <button class="run" onclick="addExtraRun(5)">5</button>
-      <button class="run" onclick="addExtraRun(6)">6</button>
+    <div id="extraRunBlock" style="display: none;">
+      <button class="extraRun" onclick="addExtraRun(0)">0</button>
+      <button class="extraRun" onclick="addExtraRun(1)">1</button>
+      <button class="extraRun" onclick="addExtraRun(2)">2</button>
+      <button class="extraRun" onclick="addExtraRun(3)">3</button>
+      <button class="extraRun" onclick="addExtraRun(4)">4</button>
+      <button class="extraRun" onclick="addExtraRun(5)">5</button>
+      <button class="extraRun" onclick="addExtraRun(6)">6</button>
     </div>
     <div id="balls"></div>
     <script src="index.js"></script>
