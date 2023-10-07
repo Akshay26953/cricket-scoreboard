@@ -3,9 +3,8 @@ const oversBoard = document.getElementById("oversBoard");
 const balls = document.getElementById("balls");
 const extraRunBlock = document.getElementById("extraRunBlock");
 const extraBtn = document.getElementById("extraBtn");
-const runBtn = document.querySelectorAll('.run');
+const runBtn = document.querySelectorAll(".run");
 // console.log(run)
-
 
 function getData() {
   return localStorage.getItem("scoreCard");
@@ -41,7 +40,7 @@ showRuns();
 function addRun(run) {
   if (typeof run == "string") {
     extraRunBlock.style.display = "block";
-    for(let x of runBtn){
+    for (let x of runBtn) {
       x.disabled = true;
     }
   }
@@ -58,10 +57,13 @@ function addExtraRun(extraRun) {
     run = extraRun + "+" + score.over.pop();
   }
   score.over.push(run);
+  score.overs.pop();
+  score.overs.push(score.over);
   localStorage.setItem("scoreCard", JSON.stringify(score));
-  for(let x of runBtn){
+  for (let x of runBtn) {
     x.disabled = false;
   }
+  showRuns();
 }
 
 function updateOver(run) {
