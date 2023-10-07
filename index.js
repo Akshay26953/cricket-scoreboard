@@ -4,8 +4,7 @@ const balls = document.getElementById("balls");
 const extraRunBlock = document.getElementById("extraRunBlock");
 const extraBtn = document.getElementById("extraBtn");
 
-let scoreSheet;
-run.style.background ='red';
+
 function getData() {
   return localStorage.getItem("scoreCard");
 }
