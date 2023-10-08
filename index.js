@@ -28,9 +28,9 @@ function showRuns() {
       .join(" ");
     runsBoard.innerHTML = score.score + " / " + score.wickets;
     oversBoard.innerHTML =
-      (score.over.length == 6 ? score.overs.length : score.overs.length - 1) +
+      ((score.over.length-score.extras) == 6 ? score.overs.length : score.overs.length - 1) +
       "." +
-      (score.over.length == 6 ? 0 : score.over.length) +
+      ((score.over.length-score.extras) == 6 ? 0 : (score.over.length-score.extras)) +
       " Overs";
     balls.innerHTML = data;
   }
