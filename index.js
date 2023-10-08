@@ -47,25 +47,6 @@ function addRun(run) {
   updateOver(run);
 }
 
-function addExtraRun(extraRun) {
-  extraRunBlock.style.display = "none";
-  const score = JSON.parse(getData());
-  score.extraRun = extraRun;
-  if (extraRun == 0) {
-    run = score.over.pop();
-  } else {
-    run = extraRun + "+" + score.over.pop();
-  }
-  score.over.push(run);
-  score.overs.pop();
-  score.overs.push(score.over);
-  localStorage.setItem("scoreCard", JSON.stringify(score));
-  for (let x of runBtn) {
-    x.disabled = false;
-  }
-  showRuns();
-}
-
 function updateOver(run) {
   const score = getData();
 
@@ -105,12 +86,34 @@ function countScore(run, score) {
     if (run == "W") {
       score.wickets += 1;
     } else {
+    score.score += 1;
       score.extras += 1;
     }
   }
 
   localStorage.setItem("scoreCard", JSON.stringify(score));
 }
+
+function addExtraRun(extraRun) {
+  extraRunBlock.style.display = "none";
+  const score = JSON.parse(getData());
+  score.extraRun = extraRun;
+  if (extraRun == 0) {
+    run = score.over.pop();
+  } else {
+    run = extraRun + "+" + score.over.pop();
+  }
+  score.over.push(run);
+  score.overs.pop();
+  score.overs.push(score.over);
+  score.score += extraRun;
+  localStorage.setItem("scoreCard", JSON.stringify(score));
+  for (let x of runBtn) {
+    x.disabled = false;
+  }
+  showRuns();
+}
+
 
 function reset() {
   if (confirm("Do you want to reset all?")) {
