@@ -20,7 +20,6 @@ function showRuns() {
           index + 1
         }</div> <div class="over">${e
           .map((e) => {
-            // let ball;
             if (e[0] == "W" || e[2] == "W") {
               return `<span class="ball wkt">${e}</span>`;
             } else if (e == 6 || e[0] == "6") {
@@ -30,7 +29,6 @@ function showRuns() {
             } else {
               return `<span class="ball">${e}</span>`;
             }
-            // return ball;
           })
           .join(" ")}</div></div>`;
       })
