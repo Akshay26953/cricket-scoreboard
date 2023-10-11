@@ -28,9 +28,13 @@ function showRuns() {
       .join(" ");
     runsBoard.innerHTML = score.score + " / " + score.wickets;
     oversBoard.innerHTML =
-      ((score.over.length-score.extras) == 6 ? score.overs.length : score.overs.length - 1) +
+      (score.over.length - score.extras >= 6
+        ? score.overs.length
+        : score.overs.length - 1) +
       "." +
-      ((score.over.length-score.extras) == 6 ? 0 : (score.over.length-score.extras)) +
+      (score.over.length - score.extras >= 6
+        ? 0
+        : score.over.length - score.extras) +
       " Overs";
     balls.innerHTML = data;
   }
@@ -86,7 +90,7 @@ function countScore(run, score) {
     if (run == "W") {
       score.wickets += 1;
     } else {
-    score.score += 1;
+      score.score += 1;
       score.extras += 1;
     }
   }
@@ -114,11 +118,32 @@ function addExtraRun(extraRun) {
   showRuns();
 }
 
+function resetLast() {
+  const reset = confirm("Do you want to delete last entry?");
+  if (reset) {
+    const score = JSON.parse(getData());
+    const data = score.over.pop();
+    if (typeof data == "number") {
+      score.score -= data;
+    } else {
+      if (data[2] == "n" || data[2] == "w") {
+        score.score -= Number(data[0]) + 1;
+        score.extras -= 1;
+      } else if (data[2] == "W") {
+        score.score -= Number(data[0]);
+        score.wickets -= 1;
+      }
+    }
+    score.overs.pop();
+    score.overs.push(score.over);
+    localStorage.setItem("scoreCard", JSON.stringify(score));
+  }
+  showRuns();
+}
 
 function reset() {
   if (confirm("Do you want to reset all?")) {
     localStorage.removeItem("scoreCard");
-    // localStorage.clear();
   }
   location.reload();
 }
