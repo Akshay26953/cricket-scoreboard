@@ -4,7 +4,7 @@ const balls = document.getElementById("balls");
 const extraRunBlock = document.getElementById("extraRunBlock");
 const extraBtn = document.getElementById("extraBtn");
 const runBtn = document.querySelectorAll(".run");
-// console.log(run)
+const ballSet = document.querySelectorAll(".ball");
 
 function getData() {
   return localStorage.getItem("scoreCard");
@@ -21,7 +21,17 @@ function showRuns() {
           index + 1
         }</div> <div class="over">${e
           .map((e) => {
-            return `<span class="ball">${e}</span>`;
+            // let ball;
+            if (e[0] == "W" || e[2] == "W") {
+              return `<span class="ball wkt">${e}</span>`;
+            } else if (e == 6 || e[0] == "6") {
+              return `<span class="ball six">${e}</span>`;
+            } else if (e == 4 || e[0] == "4") {
+              return `<span class="ball four">${e}</span>`;
+            } else {
+              return `<span class="ball">${e}</span>`;
+            }
+            // return ball;
           })
           .join(" ")}</div></div>`;
       })

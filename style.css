@@ -89,3 +89,21 @@ h1 {
   border-radius: 1rem;
   font-size: 1.6rem;
 }
+.six {
+  background: rgb(212, 255, 212);
+  border-color: rgb(39, 156, 39);
+  color: green;
+  font-weight: bold;
+}
+.four {
+  background: rgb(212, 212, 255);
+  border-color: rgb(50, 50, 255);
+  color: blue;
+  font-weight: bold;
+}
+.wkt {
+  background: rgb(255, 212, 212);
+  border-color: rgb(255, 50, 50);
+  color: red;
+  font-weight: bold;
+}
