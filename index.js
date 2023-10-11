@@ -4,7 +4,6 @@ const balls = document.getElementById("balls");
 const extraRunBlock = document.getElementById("extraRunBlock");
 const extraBtn = document.getElementById("extraBtn");
 const runBtn = document.querySelectorAll(".run");
-const ballSet = document.querySelectorAll(".ball");
 
 function getData() {
   return localStorage.getItem("scoreCard");
